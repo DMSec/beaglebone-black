@@ -10,10 +10,15 @@ A repository with scripts, tools and programs to use with my beaglebone black
 
 sudo su
 
+
 connmanctl scan wifi
+
 connmanctl agents on
+
 connmanctl services
+
 connmanctl connect xxxxxxxxxxxx
+
 connmanctl quit
 
 ### update and prepare the linux headers
@@ -28,6 +33,7 @@ apt install linux-headers-$(uname -r)
 git clone https://github.com/lwfinger/rtl8188eu.git
 cd rtl8188eu
 git checkout v5.2.2.4
+echo "blacklist r8188eu" > /etc/modprobe.d/blacklist.conf
 make all
 make install
 
