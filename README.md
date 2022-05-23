@@ -1,23 +1,45 @@
 # beaglebone-black
 A repository with scripts, tools and programs to use with my beaglebone black
 
-## Setup wifi
 
-* 1 - Make a change in the file `/etc/wpa.conf`
-  
-      sudo nano /etc/wpa.conf
-    
-     * Change the file with your network    
-    
-      network={
-          ssid="TheSSID"
-          proto=RSN
-          key_mgmt=WPA-PSK
-          pairwise=CCMP TKIP
-          group=CCMP TKIP
-          psk="ThePassword"}
+## Beaglebone black rev c
 
-* 2 - Run the file `.scripts/setupWifi-USB-TL-WN722N.sh`
+## access the beablebone with usb over internet
+
+## Connect your usb dongle TL-WN722N to wifi network
+
+sudo su
+
+connmanctl scan wifi
+connmanctl agents on
+connmanctl services
+connmanctl connect xxxxxxxxxxxx
+connmanctl quit
+
+### update and prepare the linux headers
+
+apt update
+apt upgrade -y
+apt install linux-headers-$(uname -r)
+
+
+### Install manually the driver wifi
+
+git clone https://github.com/lwfinger/rtl8188eu.git
+cd rtl8188eu
+git checkout v5.2.2.4
+make all
+make install
+
+
+
+
+
+
+
+
+
+
 
     
 
