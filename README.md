@@ -44,6 +44,11 @@ make all
 
 make install
 
+### disconnect from wifi now
+
+```
+connmanctl connect xxxxxxxxxxxx
+```
 
 ### Enable type monitor to wifi adapter 
 
