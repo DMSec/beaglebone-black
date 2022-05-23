@@ -24,17 +24,24 @@ connmanctl quit
 ### update and prepare the linux headers
 
 apt update
+
 apt upgrade -y
+
 apt install linux-headers-$(uname -r)
 
 
 ### Install manually the driver wifi
 
 git clone https://github.com/lwfinger/rtl8188eu.git
+
 cd rtl8188eu
+
 git checkout v5.2.2.4
+
 echo "blacklist r8188eu" > /etc/modprobe.d/blacklist.conf
+
 make all
+
 make install
 
 
