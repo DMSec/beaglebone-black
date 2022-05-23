@@ -49,7 +49,7 @@ make install
 
 iwconfig wlan0 mode monitor
 
-### Config the hostapd
+## Config the hostapd
 
 edit the file /etc/hostapd/hostapd.conf
 
@@ -75,10 +75,25 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
+### Test manually the hostapd
 
+```
 
+/usr/sbin/hostapd /etc/hostapd/hostapd.conf
 
+```
 
+### Enable hostapd as a service
+```
+systemctl unmask hostapd
+systemctl enable hostapd
+```
+
+You can test manually that the service will start this way with
+
+```
+systemctl start hostapd
+```
 
 
 
