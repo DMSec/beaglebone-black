@@ -101,8 +101,21 @@ systemctl start hostapd
 ```
 
 
+## DHCP
 
-    
+### Install DHCP
+
+```
+apt-get install isc-dhcp-server
+
+```
+
+edit the file /etc/default/isc-dhcp-server and change the line of ipv4.
+```
+
+INTERFACESv4="wlan0"
+
+```
 
 
 
