@@ -117,6 +117,22 @@ INTERFACESv4="wlan0"
 
 ```
 
+edit the file /etc/dhcp/dhcpd.conf
+```
+option domain-name "example.com";
+option domain-name-servers 1.1.1.1, 8.8.8.8;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+ddns-update-style none;
+
+subnet 192.168.66.0 netmask 255.255.255.0 {
+  range 192.168.66.2 192.168.66.20;
+  option domain-name-servers 192.168.15.1, 1.1.1.1, 8.8.8.8;
+  option routers 192.168.66.1;
+}
+```
 
 
                 
