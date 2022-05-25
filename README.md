@@ -7,9 +7,8 @@ A repository with scripts, tools and programs to use with my beaglebone black
 ## access the beablebone with usb over internet
 
 ## Connect your usb dongle TL-WN722N to wifi network
-
+```
 sudo su
-
 
 connmanctl scan wifi
 
@@ -20,18 +19,18 @@ connmanctl services
 connmanctl connect xxxxxxxxxxxx
 
 connmanctl quit
-
+```
 ### update and prepare the linux headers
-
+```
 apt update
 
 apt upgrade -y
 
 apt install linux-headers-$(uname -r)
-
+```
 
 ### Install manually the driver wifi
-
+```
 git clone https://github.com/lwfinger/rtl8188eu.git
 
 cd rtl8188eu
@@ -43,6 +42,7 @@ echo "blacklist r8188eu" > /etc/modprobe.d/blacklist.conf
 make all
 
 make install
+```
 
 ### disconnect from wifi now
 
@@ -51,8 +51,31 @@ connmanctl connect xxxxxxxxxxxx
 ```
 
 ### Enable type monitor to wifi adapter 
+```
+iwconfig wlan0 mode Master
+```
+### Config the networking
 
-iwconfig wlan0 mode monitor
+edit the file /etc/network/interfaces. "e.g my network eth0 plugged on Lan router is 192.168.15.0/24"
+```
+auto lo
+iface lo inet loopback
+
+auto wlan0
+iface wlan0 inet static
+    address 192.168.66.1
+    netmask 255.255.255.0
+    gateway 192.168.66.1
+    wireless-mode Master
+    dns-nameservers 1.1.1.1, 8.8.8.8
+    
+auto eth0
+iface eth0 inet static
+    address 192.168.15.66
+    netmask 255.255.255.0
+    gateway 192.168.15.1
+    dns-nameservers 1.1.1.1, 8.8.8.8
+```
 
 ## Config the hostapd
 
@@ -83,9 +106,7 @@ rsn_pairwise=CCMP
 ### Test manually the hostapd
 
 ```
-
 /usr/sbin/hostapd /etc/hostapd/hostapd.conf
-
 ```
 
 ### Enable hostapd as a service
@@ -134,6 +155,8 @@ subnet 192.168.66.0 netmask 255.255.255.0 {
 }
 ```
 
+## Using the internet traffic in wlan0 from eth0.
 
-                
+
+## OpenVPN                
 
