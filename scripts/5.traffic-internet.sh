@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./4.iptables-clear.sh
+
 echo "Telling kernel to turn on ipv4 ip_forwarding"
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo "Done. Setting up iptables rules to allow FORWARDING"

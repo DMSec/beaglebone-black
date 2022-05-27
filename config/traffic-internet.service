@@ -1,0 +1,9 @@
+[Unit]
+Description=Enable internet traffic wlan0 with hostapd systemd service.
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/debian/scripts/5.traffic-internet.sh
+
+[Install]
+WantedBy=multi-user.target
