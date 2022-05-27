@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cp ../config/interfaces /etc/network/interfaces
+
 # You can use the file ../drivers/rt8188eu-5.2.2.4.zip or using the process below
 git clone https://github.com/lwfinger/rtl8188eu.git
 
